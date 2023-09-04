@@ -1,0 +1,19 @@
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mariadb://54.180.89.131:3306/springCodingBaseWeb
+    username: springCodingBaseWeb
+    password: springCodingBaseWeb12#
+    driverClassName: org.mariadb.jdbc.Driver
+    validation-query: SELECT 1
+    test-on-borrow: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 1000
+  devtools:
+    livereload:
+      enabled: true

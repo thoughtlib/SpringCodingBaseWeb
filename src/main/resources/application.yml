@@ -1,14 +1,12 @@
 spring:
-  datasource:
-    url: jdbc:mariadb://54.180.89.131:3306/springCodingBaseWeb
-    username: springCodingBaseWeb
-    password: springCodingBaseWeb12#
-  jpa:
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        show_sql: true
-  devtools:
-    livereload:
-      enabled: true
+  profiles:
+    active: dev
+
+# logging:
+#   level:
+#     jdbc: INFO
+#     com.thoughtlib.springbatchpractice: INFO
+#     org.hibernate.SQL: INFO
+#     org.hibernate.type: INFO
+#   file:
+#     path: /tmp
