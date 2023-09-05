@@ -1,8 +1,10 @@
 package com.scbw.SpringCodingBaseWeb.board;
 
+import com.scbw.SpringCodingBaseWeb.board.dto.BoardDTO;
 import com.scbw.SpringCodingBaseWeb.board.entity.Board;
 import com.scbw.SpringCodingBaseWeb.board.repository.BoardRepository;
 import com.scbw.SpringCodingBaseWeb.board.repository.custom.BoardCustomRepositoryImpl;
+import com.scbw.SpringCodingBaseWeb.board.service.BoardService;
 import com.scbw.SpringCodingBaseWeb.util.UUIDGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,5 +31,4 @@ public class BoardRepositoryTest {
 
         boardRepository.save(board);
     }
-
 }

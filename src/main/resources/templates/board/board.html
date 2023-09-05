@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<link rel="shortcut icon" href="https://s3.ap-northeast-2.amazonaws.com/hanwoolnet.co.kr/homepage/user/favicon_c.ico">
+<link rel="stylesheet" type="text/css" href="/css/plugins/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/plugins/AdminLTE.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/plugins/all-skins.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/plugins/mobiscroll.jquery.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/plugins/dataTables.bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/css/plugins/buttons.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="/css/plugins/fixedColumns.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="/css/plugins/jquery.fileupload.min.css">
+<link rel="stylesheet" type="text/css" href="/css/plugins/tooltipster.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+  <section class="content">
+    <div class="box box-primary">
+      <div class="box-body">
+        <table id="datatable" class="table table-bordered table-striped" style="width:3000px">
+          <tr>
+            <td>제목</td>
+            <td>작성자</td>
+          </tr>
+          <tr>
+            <td th:text="${board.title}"></td>
+            <td th:text="${board.writer}"></td>
+          </tr>
+        </table>
+      </div>
+      <p th:text="${board.content}"></p>
+    </div>
+    <div class="box box-primary">
+      <button th:onclick="|location.href='@{/board/update(boardId=${board.boardId})}'|">수정</button>
+      <button th:onclick="|location.href='@{/board/delete(boardId=${board.boardId})}'|">삭제</button>
+      <button th:onclick="|location.href='@{/board}'|">목록</button>
+    </div>
+  </section>
+</body>
+</html>

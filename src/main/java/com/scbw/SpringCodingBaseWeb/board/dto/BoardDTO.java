@@ -11,7 +11,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 public class BoardDTO {
-    private String id;
+    private String boardId;
     private String title, content;
+    private String writer;
     private Boolean used;
 }
