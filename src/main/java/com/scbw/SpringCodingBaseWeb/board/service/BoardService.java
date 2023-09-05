@@ -8,17 +8,18 @@ import com.scbw.SpringCodingBaseWeb.util.UUIDGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 
 @Service
 @RequiredArgsConstructor
-//@Transactional(readOnly = true)
-@Transactional(readOnly = false)
+@Transactional(readOnly = true)
 public class BoardService {
     private final BoardRepository boardRepository;
     private final BoardMapper boardMapper;
@@ -27,33 +28,30 @@ public class BoardService {
         return boardRepository.findAll(pageable);
     }
 
-    public Optional<Board> findById(String id) {
-        return boardRepository.findById(id);
+    public Board findById(String id) {
+        return boardRepository.findById(id).get();
     }
 
-    public Board insert(BoardDTO boardDTO) {
+    @Transactional
+    public Board insert(BoardDTO boardDTO) throws Exception {
         boardDTO.setBoardId(UUIDGenerator.generate());
         boardDTO.setUsed(true);
 
         return save(boardDTO);
     }
 
-    public Board update(BoardDTO boardDTO) {
-        boardDTO.setUsed(true); // FIXME: 문제가 되는 코드
+    @Transactional
+    public Board update(BoardDTO boardDTO) throws Exception {
+        boardDTO.setUsed(true);
         return save(boardDTO);
     }
 
-    public Boolean delete(String boardId) {
-        try {
-            boardRepository.deleteById(boardId);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+    @Transactional
+    public void delete(String boardId) throws Exception {
+        boardRepository.deleteById(boardId);
     }
 
-    private Board save(BoardDTO boardDTO) {
+    private Board save(BoardDTO boardDTO) throws Exception {
         Board board = boardMapper.dtoToEntity(boardDTO);
         return boardRepository.save(board);
     }

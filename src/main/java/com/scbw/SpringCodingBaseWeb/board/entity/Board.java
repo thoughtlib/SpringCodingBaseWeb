@@ -1,6 +1,7 @@
 package com.scbw.SpringCodingBaseWeb.board.entity;
 
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -11,20 +12,24 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Board {
     @Id
     @Column(length = 40)
-    private String boardId;
+    String boardId;
 
     @Column(length = 300)
-    private String title;
+    String title;
 
     @Column(length = 3000)
-    private String content;
+    String content;
 
     @Column(length = 40)
-    private String writer;
+    String writer;
 
     @Column(length = 1)
-    private Boolean used;
+    Boolean isVisible;
+
+    @Column(length = 1)
+    Boolean isDeleted;
 }
