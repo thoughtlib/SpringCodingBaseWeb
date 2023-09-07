@@ -6,12 +6,6 @@
 
 <script src="/js/board/list.js"></script>
 
-<script>
-    $(function () {
-        init();
-    });
-</script>
-
 <head>
     <meta charset="UTF-8">
     <title>게시판 목록</title>
@@ -38,7 +32,7 @@
         </div>
     </div>
     <div class="box box-primary">
-        <button th:onclick="|location.href='@{/board/write}'|">작성</button>
+        <button id="createBtn">작성</button>
     </div>
 </section>
 </body>

@@ -40,7 +40,12 @@ public class BoardRestController {
     }
 
     @PostMapping("/board/api/create")
-    public ResponseEntity create(@ModelAttribute BoardDTO boardDTO) {
+    @ResponseBody
+    public ResponseEntity create(@RequestBody BoardDTO boardDTO) {
+        if(boardDTO != null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("BAD_REQUEST");
+        }
+
         try {
             Board board = boardService.insert(boardDTO);
             return ResponseEntity.status(HttpStatus.OK).body(board);
@@ -51,7 +56,7 @@ public class BoardRestController {
     }
 
     @PutMapping("/board/api/edit")
-    public ResponseEntity edit(@ModelAttribute BoardDTO boardDTO) {
+    public ResponseEntity edit(@RequestBody BoardDTO boardDTO) {
         try {
             Board board = boardService.update(boardDTO);
             return ResponseEntity.status(HttpStatus.OK).body(board);

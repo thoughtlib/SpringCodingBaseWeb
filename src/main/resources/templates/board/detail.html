@@ -23,16 +23,32 @@
 
     </form>
     <div class="box-body">
-      <table id="datatable" class="table table-bordered table-striped" style="width:3000px">
+      <table id="datatable" class="">
         <thead>
         <tr>
-          <td>번호</td>
-          <td>제목</td>
-          <td>작성자</td>
-          <td></td>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
         </tr>
         </thead>
         <tbody>
+          <tr>
+            <td>번호</td>
+            <td colspan="3"><span id="boardId"></span></td>
+          </tr>
+          <tr>
+            <td>작성자</td>
+            <td colspan="3"><span id="writer"></span></td>
+          </tr>
+          <tr>
+            <td>제목</td>
+            <td colspan="3"><span id="title"></span></td>
+          </tr>
+          <tr>
+            <td>내용</td>
+            <td colspan="3"><span id="content"></span></td>
+          </tr>
         </tbody>
       </table>
     </div>

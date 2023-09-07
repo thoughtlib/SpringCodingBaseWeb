@@ -37,13 +37,13 @@ public class BoardController {
         return "board/detail";
     }
 
-    @GetMapping("/write")
-    public String writeForm() {
+    @GetMapping("/board/create")
+    public String create() {
         return "board/create";
     }
 
-    @GetMapping("/update")
-    public String updateForm(@RequestParam("boardId") String boardId, Model model) {
+    @GetMapping("/board/edit")
+    public String update(@RequestParam("boardId") String boardId, Model model) {
         Board board = boardService.findById(boardId);
 
         if(board != null) {
@@ -53,6 +53,6 @@ public class BoardController {
             model.addAttribute("state", "FAIL");
         }
 
-        return "edit";
+        return "/board/edit";
     }
 }

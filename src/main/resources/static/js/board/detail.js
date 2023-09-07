@@ -14,32 +14,17 @@ function detail() {
         success: function (response) {
             var board = response;
             if (board != null) {
-                $('#datatable tbody').append(makeHtml(board))
+                setBoardData(board);
+            } else {
+                $('#datatable tbody').append('데이터가 없습니다.')
             }
         }
     })
 }
 
-function makeHtml(board) {
-    var html = '';
-
-    html += template(board);
-
-    return html;
-}
-
-function template(board) {
-    var template = '';
-
-    template += '<tr>';
-    template += '  <td>' + board.boardId + '</td>';
-    template += '  <td>' + board.title +'</td>';
-    template += '  <td>' + board.writer +'</td>';
-//    template += '  <td><button>상세</button></td>';
-    template += '<tr/>';
-    template += '<tr>';
-    template += '  <td>' + board.content +'</td>';
-    template += '<tr/>';
-
-    return template;
+function setBoardData(board) {
+    $('#boardId').text(board.boardId)
+    $('#writer').text(board.writer)
+    $('#title').text(board.title)
+    $('#content').text(board.content)
 }
