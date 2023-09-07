@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @Controller
 @RequiredArgsConstructor
 @Slf4j
@@ -25,8 +27,13 @@ public class BoardController {
 
     @GetMapping("/board/detail/{boardId}")
     public String board(@PathVariable String boardId, Model model) {
-        Board board = boardService.findById(boardId);
-        model.addAttribute("board", board);
+        if (boardId != null && !boardId.isEmpty()) {
+            model.addAttribute("boardId", boardId);
+            model.addAttribute("state", "SUCCESS");
+        } else {
+            model.addAttribute("state", "FAIL");
+        }
+
         return "board/detail";
     }
 

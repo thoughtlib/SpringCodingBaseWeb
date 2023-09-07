@@ -21,13 +21,14 @@ public class BoardRestController {
 
     BoardService boardService;
 
-    @GetMapping(path = "/board/api/list",params = "!boardId")
+//    @GetMapping(path = "/board/api/list", params = "!boardId")
+    @GetMapping(path = "/board/api/list")
     public ResponseEntity boardList(Pageable pageable) {
         Page<Board> boardPage = boardService.findAll(pageable);
         return ResponseEntity.ok(boardPage);
     }
 
-    /*@GetMapping("/board/detail/{boardId}")
+    @GetMapping("/board/api/detail/{boardId}")
     public ResponseEntity board(@PathVariable String boardId) {
         try {
             Board board = boardService.findById(boardId);
@@ -36,7 +37,7 @@ public class BoardRestController {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("NOT_FOUND");
         }
-    }*/
+    }
 
     @PostMapping("/board/api/create")
     public ResponseEntity create(@ModelAttribute BoardDTO boardDTO) {

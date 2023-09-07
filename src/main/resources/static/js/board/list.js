@@ -1,7 +1,6 @@
-
-
 function init() {
     search();
+
 }
 
 function search() {
@@ -11,11 +10,18 @@ function search() {
         data: $('#searchForm').serialize(),
         success: function (response) {
             var boardList = response.content;
-            if(boardList != null && boardList.length > 0) {
+            if (boardList != null && boardList.length > 0) {
                 $('#datatable tbody').append(makeHtml(boardList))
             }
+
+            $(".detailButton").click(function () {
+                var boardId = $(this).data("boardId");
+                console.log(boardId);
+                window.location.href = "/board/detail/" + boardId;
+            });
         }
     })
+
 }
 
 function makeHtml(boardList) {
@@ -35,7 +41,8 @@ function template(board) {
     template += '  <td>' + board.boardId + '</td>';
     template += '  <td>' + board.title +'</td>';
     template += '  <td>' + board.writer +'</td>';
-    template += '  <td><button>상세</button></td>';
+//    template += '  <td><button>상세</button></td>';
+    template += '<td><button class="detailButton" data-board-id="' + board.boardId + '">상세</button></td>';
     template += '<tr/>';
 
     return template;
