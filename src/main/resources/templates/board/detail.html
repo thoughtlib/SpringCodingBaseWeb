@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
+
+<th:block th:include="/layout/header"></th:block>
+
+<script src="/js/board/detail.js"></script>
+
+<script>
+    $(function () {
+        init();
+    });
+</script>
+
+<head>
+  <meta charset="UTF-8">
+  <title>게시판 상세</title>
+</head>
+<body>
+<section class="content">
+  <div class="box box-primary">
+    <form id="detailForm">
+
+    </form>
+    <div class="box-body">
+      <table id="datatable" class="">
+        <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>번호</td>
+            <td colspan="3"><span id="boardId"></span></td>
+          </tr>
+          <tr>
+            <td>작성자</td>
+            <td colspan="3"><span id="writer"></span></td>
+          </tr>
+          <tr>
+            <td>제목</td>
+            <td colspan="3"><span id="title"></span></td>
+          </tr>
+          <tr>
+            <td>내용</td>
+            <td colspan="3"><span id="content"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="box box-primary">
+  </div>
+</section>
+</body>
+</html>

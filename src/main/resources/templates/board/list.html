@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
+
+<th:block th:include="/layout/header"></th:block>
+
+<script src="/js/board/list.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 목록</title>
+</head>
+<body>
+<section class="content">
+    <div class="box box-primary">
+        <form id="searchForm">
+
+        </form>
+        <div class="box-body">
+            <table id="datatable" class="table table-bordered table-striped" style="width:3000px">
+                <thead>
+                    <tr>
+                        <td>번호</td>
+                        <td>제목</td>
+                        <td>작성자</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="box box-primary">
+        <button id="createBtn">작성</button>
+    </div>
+</section>
+</body>
+</html>
