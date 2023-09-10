@@ -8,8 +8,8 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface BoardCustomRepository {
-    Page<Board> findAll(BoardSearchDTO search, Pageable pageable);
+    Page<Board> findAll(BoardSearchDTO searchDTO, Pageable pageable);
 
-    List<Board> findAll(BoardSearchDTO search);
+    List<Board> findAll(BoardSearchDTO searchDTO);
 
 }
