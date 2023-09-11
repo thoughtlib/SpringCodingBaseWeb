@@ -26,7 +26,7 @@ public class BoardRepositoryTest {
                 .title("test title")
                 .content("test content")
                 .writer("test wirter")
-                .used(true)
+//                .used(true)
                 .build();
 
         boardRepository.save(board);

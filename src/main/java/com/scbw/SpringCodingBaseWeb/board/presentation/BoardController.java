@@ -44,10 +44,16 @@ public class BoardController {
 
     @GetMapping("/board/edit")
     public String update(@RequestParam("boardId") String boardId, Model model) {
-        Board board = boardService.findById(boardId);
-
-        if(board != null) {
-            model.addAttribute("board", board);
+//        Board board = boardService.findById(boardId);
+//
+//        if(board != null) {
+//            model.addAttribute("board", board);
+//            model.addAttribute("state", "SUCCESS");
+//        } else {
+//            model.addAttribute("state", "FAIL");
+//        }
+        if (boardId != null && !boardId.isEmpty()) {
+            model.addAttribute("boardId", boardId);
             model.addAttribute("state", "SUCCESS");
         } else {
             model.addAttribute("state", "FAIL");

@@ -4,6 +4,7 @@ var boardId = segments[segments.length - 1];
 
 function init() {
     detail();
+    eventBinding();
 }
 
 function detail() {
@@ -27,4 +28,14 @@ function setBoardData(board) {
     $('#writer').text(board.writer)
     $('#title').text(board.title)
     $('#content').text(board.content)
+    $('#button').text(board.content)
+}
+
+function eventBinding() {
+    /* 수정 버튼 이벤트 등록 */
+    var editButton = document.getElementById("editButton");
+
+    editButton.addEventListener("click", function () {
+        window.location.href = "/board/edit?boardId=" + boardId;
+    });
 }
