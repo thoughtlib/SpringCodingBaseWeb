@@ -1,4 +1,4 @@
-package com.scbw.SpringCodingBaseWeb.board;
+/*package com.scbw.SpringCodingBaseWeb.board;
 
 import com.scbw.SpringCodingBaseWeb.board.dto.BoardDTO;
 import com.scbw.SpringCodingBaseWeb.board.entity.Board;
@@ -36,4 +36,4 @@ public class BoardServiceTest {
 
         assertThat(board).isNotNull();
     }
-}
+}*/

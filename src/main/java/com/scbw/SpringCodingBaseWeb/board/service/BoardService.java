@@ -1,6 +1,7 @@
 package com.scbw.SpringCodingBaseWeb.board.service;
 
 import com.scbw.SpringCodingBaseWeb.board.dto.BoardDTO;
+import com.scbw.SpringCodingBaseWeb.board.dto.BoardSearchDTO;
 import com.scbw.SpringCodingBaseWeb.board.entity.Board;
 import com.scbw.SpringCodingBaseWeb.board.mapper.BoardMapper;
 import com.scbw.SpringCodingBaseWeb.board.repository.BoardRepository;
@@ -24,8 +25,8 @@ public class BoardService {
     private final BoardRepository boardRepository;
     private final BoardMapper boardMapper;
 
-    public Page<Board> findAll(Pageable pageable) {
-        return boardRepository.findAll(pageable);
+    public Page<Board> findAll(BoardSearchDTO search, Pageable pageable) {
+        return boardRepository.findAll(search, pageable);
     }
 
     public Board findById(String id) {

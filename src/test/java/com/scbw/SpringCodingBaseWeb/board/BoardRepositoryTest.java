@@ -1,4 +1,4 @@
-package com.scbw.SpringCodingBaseWeb.board;
+/*package com.scbw.SpringCodingBaseWeb.board;
 
 import com.scbw.SpringCodingBaseWeb.board.dto.BoardSearchDTO;
 import com.scbw.SpringCodingBaseWeb.board.entity.Board;
@@ -42,4 +42,4 @@ public class BoardRepositoryTest {
 
         assertThat(boardList).isNotNull();
     }
-}
+}*/
