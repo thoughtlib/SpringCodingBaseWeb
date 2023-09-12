@@ -1,6 +1,7 @@
 package com.scbw.SpringCodingBaseWeb.board.presentation;
 
 import com.scbw.SpringCodingBaseWeb.board.dto.BoardDTO;
+import com.scbw.SpringCodingBaseWeb.board.dto.BoardSearchDTO;
 import com.scbw.SpringCodingBaseWeb.board.entity.Board;
 import com.scbw.SpringCodingBaseWeb.board.service.BoardService;
 import lombok.AccessLevel;
@@ -21,10 +22,9 @@ public class BoardRestController {
 
     BoardService boardService;
 
-//    @GetMapping(path = "/board/api/list", params = "!boardId")
-    @GetMapping(path = "/board/api/list")
-    public ResponseEntity boardList(Pageable pageable) {
-        Page<Board> boardPage = boardService.findAll(pageable);
+    @PostMapping(path = "/board/api/list")
+    public ResponseEntity boardList(BoardSearchDTO search, Pageable pageable) {
+        Page<Board> boardPage = boardService.findAll(search, pageable);
         return ResponseEntity.ok(boardPage);
     }
 

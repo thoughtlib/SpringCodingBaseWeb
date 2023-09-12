@@ -5,6 +5,8 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 }
 
+ext['log4j2.version'] = '2.17.0'
+
 group = 'com.scbw'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
@@ -14,49 +16,65 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+//	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.session:spring-session-core'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.projectlombok:lombok'
+	implementation 'org.mariadb.jdbc:mariadb-java-client'
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+	implementation 'junit:junit:4.12'
 	implementation 'com.querydsl:querydsl-jpa:4.2.2'
 	implementation 'com.querydsl:querydsl-core:4.2.2'
 	implementation 'com.querydsl:querydsl-apt:4.2.2'
-	implementation 'org.projectlombok:lombok'
-	implementation 'org.mariadb.jdbc:mariadb-java-client'
-	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
-	implementation 'junit:junit:4.12'
+	implementation 'org.modelmapper:modelmapper:2.3.0'
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	implementation 'javax.servlet:jstl:1.2'
+	implementation 'org.apache.poi:poi-ooxml:4.1.2'
+	implementation group: 'javax.json', name: 'javax.json-api', version: '1.0'
+	implementation group: 'org.glassfish', name: 'javax.json', version: '1.0.4'
 
-	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
-	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'com.querydsl:querydsl-apt:4.2.2:jpa'
 	annotationProcessor 'jakarta.persistence:jakarta.persistence-api'
 	annotationProcessor 'jakarta.annotation:jakarta.annotation-api'
+	compile group: 'com.google.code.gson', name: 'gson', version: '2.8.5'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 }
 
-tasks.named('test') {
+test {
 	useJUnitPlatform()
 }
 
-//def querydslDir = "$buildDir/generated/querydsl"
+//tasks.named('test') {
+//	useJUnitPlatform()
+//}
+//
+//def querydslDir = "src/main/generated"
 //
 //querydsl {
+//	library = "com.querydsl:querydsl-apt"
 //	jpa = true
 //	querydslSourcesDir = querydslDir
 //}
+//
 //sourceSets {
-//	main.java.srcDir querydslDir
+//	main {
+//		java {
+//			srcDirs = ['src/main/java', querydslDir]
+//		}
+//	}
 //}
+//
 //compileQuerydsl{
 //	options.annotationProcessorPath = configurations.querydsl
 //}
-//configurations {
-//	compileOnly {
-//		extendsFrom annotationProcessor
-//	}
-//	querydsl.extendsFrom compileClasspath
-//}
+
 
