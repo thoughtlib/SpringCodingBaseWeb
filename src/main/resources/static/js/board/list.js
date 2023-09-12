@@ -8,26 +8,45 @@ function init() {
 }
 
 function eventBinding() {
+    $("#title, #writer").on("keyup",function(key){
+        if(key.keyCode == 13) {
+            search();
+        }
+    })
+
+    $('#searchBtn').on('click', function () {
+        search();
+    })
+
     $('#createBtn').on('click', function () {
         location.href='/board/create';
     })
 }
 
 function search() {
+    deleteData();
+
     $.ajax({
         url: '/board/api/list',
-        type: 'GET',
+        type: 'POST',
         data: $('#searchForm').serialize(),
         success: function (response) {
             var boardList = response.content;
             if (boardList != null && boardList.length > 0) {
                 setData(boardList);
+            } else {
+                alert("데이터가 없습니다.")
+                setData([]);
             }
         },
         error: function (xhr) {
             alert(xhr.responseText);
         }
     })
+}
+
+function deleteData() {
+    $('#datatable tbody').empty();
 }
 
 function setData(boardList) {
@@ -41,7 +60,7 @@ function setData(boardList) {
 }
 
 function makeHtml(boardList) {
-    var html = '';
+    var html = "";
 
     for(var i = 0; i < boardList.length; i++) {
         html += template(boardList[i]);

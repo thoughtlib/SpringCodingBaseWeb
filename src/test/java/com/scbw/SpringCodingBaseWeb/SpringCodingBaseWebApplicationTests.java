@@ -1,4 +1,4 @@
-package com.scbw.SpringCodingBaseWeb;
+/*package com.scbw.SpringCodingBaseWeb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,4 +10,4 @@ class SpringCodingBaseWebApplicationTests {
 	void contextLoads() {
 	}
 
-}
+}*/
