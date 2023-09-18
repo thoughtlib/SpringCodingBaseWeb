@@ -22,20 +22,18 @@ public class BoardServiceTest {
 
     @Test
     @DisplayName("BoardService 저장 테스트")
-    void save() {
+    void save() throws Exception {
         BoardDTO dto = BoardDTO.builder()
                 .boardId(UUIDGenerator.generate())
                 .title("saved by service")
                 .content("no content")
                 .writer("no wirter")
-//                .used(true)
+                .used(true)
                 .build();
 
-//        Board board = boardService.insert(dto);
-//        Optional<Board> findBoard = boardService.findById(board.getBoardId());
-//
-//        assertThat(board).isNotNull();
-//        assertThat(findBoard.isPresent()).isTrue();
-//        assertThat(findBoard.get()).isNotNull().isEqualTo(board);
+        Board board = boardService.insert(dto);
+        Board findBoard = boardService.findById(board.getBoardId());
+
+        assertThat(board).isNotNull();
     }
 }*/
