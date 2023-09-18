@@ -36,14 +36,13 @@ public class BoardService {
     @Transactional
     public Board insert(BoardDTO boardDTO) throws Exception {
         boardDTO.setBoardId(UUIDGenerator.generate());
-        boardDTO.setUsed(true);
-
         return save(boardDTO);
     }
 
     @Transactional
     public Board update(BoardDTO boardDTO) throws Exception {
-        boardDTO.setUsed(true);
+        boardDTO.setIsVisible(true);
+        boardDTO.setIsDeleted(false);
         return save(boardDTO);
     }
 
