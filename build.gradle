@@ -7,6 +7,7 @@ plugins {
 
 ext['log4j2.version'] = '2.17.0'
 
+mainClassName = 'com.scbw.SpringCodingBaseWebApplication'
 group = 'com.scbw'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
@@ -22,6 +23,7 @@ dependencies {
 	implementation 'org.springframework.session:spring-session-core'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'    
 	implementation 'org.projectlombok:lombok'
 	implementation 'org.mariadb.jdbc:mariadb-java-client'
 	implementation 'io.jsonwebtoken:jjwt:0.9.1'
@@ -52,29 +54,3 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
-
-//tasks.named('test') {
-//	useJUnitPlatform()
-//}
-//
-//def querydslDir = "src/main/generated"
-//
-//querydsl {
-//	library = "com.querydsl:querydsl-apt"
-//	jpa = true
-//	querydslSourcesDir = querydslDir
-//}
-//
-//sourceSets {
-//	main {
-//		java {
-//			srcDirs = ['src/main/java', querydslDir]
-//		}
-//	}
-//}
-//
-//compileQuerydsl{
-//	options.annotationProcessorPath = configurations.querydsl
-//}
-
-

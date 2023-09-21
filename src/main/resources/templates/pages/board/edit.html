@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/defaultLayout}"
+      layout:fragment="Content"
+>
+    <head>
+        <title>게시글 수정</title>
+        <!-- include CSS 영역-->
+        <link rel="stylesheet" type="text/css" href="/css/pages/board/create.css" />
+        <!-- include script 영역-->
+        <script src="/js/pages/board/edit.js"></script>
+    </head>
+    <body>
+        <form id="editForm">
+            <div class= "form-container">
+                <label for="title">제목</label>
+                <input type="text" id="title" name="title" class="form-control" placeholder="제목을 입력하세요.">
+
+                <label for="title">작성자</label>
+                <input type="text" id="writer" name="writer" class="form-control" placeholder="내용을 입력하세요.">
+            </div>
+            <label for="content">내용</label>
+            <textarea id="content" name="content" cols="400" placeholder="내용을 입력하세요."></textarea>
+        </form>
+        <button id="updateBtn">수정</button>
+    </body>
+</html>

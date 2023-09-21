@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/defaultLayout}"
+      layout:fragment="Content"
+>
+    <head>
+        <title>게시판 상세</title>
+        <!-- include CSS 영역-->
+        <link rel="stylesheet" type="text/css" href="/css/pages/board/create.css" />
+        <!-- include script 영역-->
+        <script src="/js/pages/board/create.js"></script>
+    </head>
+    <body>
+        <form id="boardForm">
+            <div class= "form-container">
+                <div class="form-container">
+                    <label for="title">제목</label>
+                    <input type="text" id="title" name="title" class="form-control" placeholder="제목을 입력하세요.">
+                </div>
+                <div class="form-container">
+                    <label for="writer">작성자</label>
+                    <input type="text" id="writer" name="writer" class="form-control" placeholder="작성자명을 입력하세요.">
+                </div>
+            </div>
+
+            <textarea id="content" name="content" cols="400" placeholder="내용을 입력하세요."></textarea>
+            <button><a id="createBtn">등록</a></button>
+            <button><a href="/board/list">목록</a></button>
+        </form>
+    </body>
+</html>

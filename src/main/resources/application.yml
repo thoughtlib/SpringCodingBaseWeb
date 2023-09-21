@@ -2,6 +2,13 @@ spring:
   profiles:
     active: dev
 
+thymeleaf:
+  cache: false
+  check-template-location: true
+  prefix: classpath:/templates/
+  suffix: .html
+  enabled: true
+
 # logging:
 #   level:
 #     jdbc: INFO

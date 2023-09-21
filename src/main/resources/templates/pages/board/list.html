@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/defaultLayout}"
+      layout:fragment="Content"
+>
+    <head>
+        <title>게시판 목록</title>
+
+        <!-- include CSS 영역-->
+
+        <!-- include script 영역-->
+        <script src="/js/pages/board/list.js"></script>
+    </head>
+    <body>
+        <section class="content">
+            <div class="box box-primary">
+                <form id="searchForm">
+                    <input type="text" id="title" name="title">
+                    <input type="text" id="writer" name="writer">
+                    <button type="button" id="searchBtn">검색</button>
+                </form>
+                <div class="box-body">
+                    <table id="datatable" class="table table-bordered table-striped" style="width:3000px">
+                        <thead>
+                            <tr>
+                                <td>번호</td>
+                                <td>제목</td>
+                                <td>작성자</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="box box-primary">
+                <button id="createBtn">작성</button>
+            </div>
+        </section>
+    </body>
+</html>
