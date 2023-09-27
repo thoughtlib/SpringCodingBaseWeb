@@ -1,82 +1,73 @@
 $(function () {
-    init();
-    eventBinding();
+   BoardList.init();
 });
 
-function init() {
-    search();
-}
+var BoardList = (function () {
 
-function eventBinding() {
-    $("#title, #writer").on("keyup",function(key){
-        if(key.keyCode == 13) {
-            search();
-        }
-    })
+    var datatable;
+    var $searchForm;
+    
+    function _init() {
+        $searchForm = $('#searchForm');
+        datatable = _initDatatable($('#datatable'));
 
-    $('#searchBtn').on('click', function () {
-        search();
-    })
-
-    $('#createBtn').on('click', function () {
-        location.href='/board/create';
-    })
-}
-
-function search() {
-    deleteData();
-
-    $.ajax({
-        url: '/board/api/list',
-        type: 'POST',
-        data: $('#searchForm').serialize(),
-        success: function (response) {
-            var boardList = response.content;
-            if (boardList != null && boardList.length > 0) {
-                setData(boardList);
-            } else {
-                alert("데이터가 없습니다.")
-                setData([]);
+        $("#title, #writer").on("keyup",function(key){
+            if(key.keyCode == 13) {
+                _search();
             }
-        },
-        error: function (xhr) {
-            alert(xhr.responseText);
-        }
-    })
-}
-
-function deleteData() {
-    $('#datatable tbody').empty();
-}
-
-function setData(boardList) {
-    $('#datatable tbody').append(makeHtml(boardList))
-
-    $(".detailButton").click(function () {
-        var boardId = $(this).data("boardId");
-        console.log(boardId);
-        window.location.href = "/board/detail/" + boardId;
-    });
-}
-
-function makeHtml(boardList) {
-    var html = "";
-
-    for(var i = 0; i < boardList.length; i++) {
-        html += template(boardList[i]);
+        })
+    
+        $('#searchBtn').on('click', function () {
+            _search();
+        })
+    
+        $('#createBtn').on('click', function () {
+            location.href='/board/create';
+        })
+        
+        _search();
     }
-    return html;
-}
 
-function template(board) {
-    var template = '';
+    function _search() {
+        _getBoardListAjax(_setData);
+    }
 
-    template += '<tr>';
-    template += '   <td>' + board.boardId + '</td>';
-    template += '   <td>' + board.title +'</td>';
-    template += '   <td>' + board.writer +'</td>';
-    template += '   <td><button class="detailButton" data-board-id="' + board.boardId + '">상세</button></td>';
-    template += '<tr/>';
+    function _initDatatable($datatable) {
+        return $datatable.DataTable({
+            columns: [
+                {data: "boardId"},
+                {data: "title"},
+                {data: "writer"},
+                {data: "isVisible"},
+            ],
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/ko.json',
+            }
+        });
+    }
 
-    return template;
-}
+    function _getBoardListAjax(callback) {
+        $.ajax({
+            url: "/board/api/list",
+            type: "POST",
+            data: $searchForm.serialize(),
+            success: function(res) {
+                callback(res.content);
+            }
+        })
+    }
+
+    function _setData(boardList) {
+        datatable.clear().draw();
+        datatable.rows.add(boardList);
+        datatable.columns.adjust().draw();
+    }
+    
+    function _clearData() {
+        datatable.clear().draw();
+    }
+
+    return {
+        init : _init
+    }
+})();
