@@ -5,40 +5,48 @@
       layout:decorate="~{layouts/defaultLayout}"
       layout:fragment="Content"
 >
-    <head>
-        <title>게시판 목록</title>
-
-        <!-- include CSS 영역-->
-
-        <!-- include script 영역-->
-        <script src="/js/pages/board/list.js"></script>
-    </head>
-    <body>
-        <section class="content">
-            <div class="box box-primary">
+<head>
+    <script src="/js/pages/board/list.js"></script>
+</head>
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">게시판 목록</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="">게시판관리</a></li>
+            <li class="breadcrumb-item active"><a href="">게시판목록</a></li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-body">
                 <form id="searchForm">
-                    <input type="text" id="title" name="title">
-                    <input type="text" id="writer" name="writer">
-                    <button type="button" id="searchBtn">검색</button>
+                    <input type="text" id="title" name="title" placeholder="제목을 입력하세요.">
+                    <input type="text" id="writer" name="writer" placeholder="작성자를 입력하세요.">
+                    <button type="button" id="searchBtn" class="btn btn-secondary" href="">검색</button>
+                    <button type="button" id="createBtn" class="btn btn-primary" href="">등록</button>
                 </form>
-                <div class="box-body">
-                    <table id="datatable" class="table table-bordered table-striped" style="width:3000px">
-                        <thead>
-                            <tr>
-                                <td>번호</td>
-                                <td>제목</td>
-                                <td>작성자</td>
-                                <td></td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
             </div>
-            <div class="box box-primary">
-                <button id="createBtn">작성</button>
+        </div>
+       
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                DataTable Example
             </div>
-        </section>
-    </body>
+            <div class="card-body">
+                <table id="datatable" class="datatable-table table-striped">
+                    <thead>
+                        <tr>
+                            <td>번호</td>
+                            <td>제목</td>
+                            <td>작성자</td>
+                            <td>공개여부</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="card mb-4">
+            
+        </div>
+    </div>
+</main>
 </html>
